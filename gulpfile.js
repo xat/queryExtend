@@ -3,9 +3,9 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
 gulp.task('minimize', function() {
-    return gulp.src('queryExtend.js')
+    return gulp.src('query-extend.js')
         .pipe(uglify())
-        .pipe(concat('queryExtend.min.js'))
+        .pipe(concat('query-extend.min.js'))
         .pipe(gulp.dest(''));
 });
 

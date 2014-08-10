@@ -1,12 +1,12 @@
 {
-  "name": "queryExtend",
-  "version": "0.1.0",
+  "name": "query-extend",
+  "version": "0.1.1",
   "homepage": "https://github.com/xat/queryextend",
   "authors": [
     "Simon Kusterer <simon@sope.io>"
   ],
   "description": "like _.extend, just for url queries.",
-  "main": "ago.js",
+  "main": "query-extend.js",
   "moduleType": [
     "globals",
     "node"

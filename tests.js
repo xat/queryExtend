@@ -1,7 +1,7 @@
-var queryExtend = require('./queryExtend');
+var queryExtend = require('./query-extend');
 var expect = require('expect.js');
 
-describe('queryExtend', function() {
+describe('query-extend', function() {
   it('should return the correct query', function() {
     expect(queryExtend('?per_page=2')).to.be.equal('?per_page=2');
     expect(queryExtend('?per_page=2', { per_page: 3 })).to.be.equal('?per_page=3');

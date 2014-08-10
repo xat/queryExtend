@@ -1,8 +1,8 @@
 {
-  "name": "queryExtend",
-  "version": "0.1.0",
+  "name": "query-extend",
+  "version": "0.1.1",
   "description": "like _.extend, just for url queries.",
-  "main": "queryExtend.js",
+  "main": "query-extend.js",
   "devDependencies": {
     "expect.js": "^0.3.1",
     "gulp": "^3.8.7",

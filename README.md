@@ -1,4 +1,4 @@
-# queryExtend
+# query-extend
 
 Like _.extend, just for URL queries.
 
@@ -6,7 +6,7 @@ Like _.extend, just for URL queries.
 
 ```javascript
 
-var queryExtend = require('queryExtend);
+var queryExtend = require('query-extend');
 
 queryExtend('http://foo.com', { per_page: 20, page 1 });
 // => http://foo.com?per_page=20&page=1
@@ -31,11 +31,11 @@ queryExtend('http://foo.com?per_page=10', '?per_page=50', { per_page: 20 });
 
 ### npm
 
-```npm install queryExtend```
+```npm install query-extend```
 
 ### bower
 
-```bower install queryExtend```
+```bower install query-extend```
 
 
 ## License
