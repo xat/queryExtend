@@ -1,0 +1,28 @@
+{
+  "name": "queryExtend",
+  "version": "0.1.0",
+  "homepage": "https://github.com/xat/queryextend",
+  "authors": [
+    "Simon Kusterer <simon@sope.io>"
+  ],
+  "description": "like _.extend, just for url queries.",
+  "main": "ago.js",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "queryextend",
+    "url",
+    "query",
+    "extend"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

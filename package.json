@@ -1,0 +1,32 @@
+{
+  "name": "queryExtend",
+  "version": "0.1.0",
+  "description": "like _.extend, just for url queries.",
+  "main": "queryExtend.js",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "gulp": "^3.8.7",
+    "gulp-concat": "^2.3.4",
+    "gulp-uglify": "^0.3.1",
+    "mocha": "^1.21.3"
+  },
+  "scripts": {
+    "test": "mocha tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:xat/queryextend.git"
+  },
+  "keywords": [
+    "queryextend",
+    "url",
+    "query",
+    "extend"
+  ],
+  "author": "Simon Kusterer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xat/queryextend/issues"
+  },
+  "homepage": "https://github.com/xat/queryextend"
+}
