@@ -8,10 +8,10 @@ Like _.extend, just for URL queries.
 
 var queryExtend = require('query-extend');
 
-queryExtend('http://foo.com', { per_page: 20, page 1 });
+queryExtend('http://foo.com', { per_page: 20, page: 1 });
 // => http://foo.com?per_page=20&page=1
 
-queryExtend('http://foo.com?per_page=10', { per_page: 20, page 1 });
+queryExtend('http://foo.com?per_page=10', { per_page: 20, page: 1 });
 // => http://foo.com?per_page=20&page=1
 
 queryExtend('http://foo.com?per_page=10', '?per_page=50');
