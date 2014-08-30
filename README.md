@@ -14,6 +14,9 @@ queryExtend('http://foo.com', { per_page: 20, page: 1 });
 queryExtend('http://foo.com?per_page=10', { per_page: 20, page: 1 });
 // => http://foo.com?per_page=20&page=1
 
+queryExtend('http://foo.com?per_page=10', { per_page: 20, tags: ['shoes', 'shirts'] });
+// => http://foo.com?per_page=20&tags[]=shoes&tags[]=shirts
+
 queryExtend('http://foo.com?per_page=10', '?per_page=50');
 // => http://foo.com?per_page=50
 

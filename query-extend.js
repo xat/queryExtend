@@ -6,23 +6,50 @@
     query.split('&')
       .forEach(function(val) {
         var pieces = val.split('=');
-        obj[decodeURIComponent(pieces[0])] = pieces[1] && decodeURIComponent(pieces[1]);
+        var key = parseKey(pieces[0]);
+        var keyDecoded = decodeURIComponent(key.val);
+        var valDecoded = pieces[1] && decodeURIComponent(pieces[1]);
+
+        if (key.type === 'array') {
+          if (!obj[keyDecoded]) obj[keyDecoded] = [];
+          obj[keyDecoded].push(valDecoded);
+        } else if (key.type === 'string') {
+          obj[keyDecoded] = valDecoded;
+        }
       });
     return obj;
   };
 
   var objectToQuery = function(obj) {
-    var pieces = [];
+    var pieces = [], encodedKey;
     for (var k in obj) {
       if (!obj.hasOwnProperty(k)) continue;
       if (typeof obj[k] === 'undefined') {
         pieces.push(encodeURIComponent(k));
         continue;
       }
-      pieces.push(encodeURIComponent(k) + '=' + encodeURIComponent(obj[k]));
+      encodedKey = encodeURIComponent(k);
+      if (isArray(obj[k])) {
+        obj[k].forEach(function(val) {
+          pieces.push(encodedKey + '[]=' + encodeURIComponent(val));
+        });
+        continue;
+      }
+      pieces.push(encodedKey + '=' + encodeURIComponent(obj[k]));
     }
     return pieces.length ? ('?' + pieces.join('&')) : '';
   };
+
+  // for now we will only support string and arrays
+  var parseKey = function(key) {
+    var pos = key.indexOf('[');
+    if (pos === -1) return { type: 'string', val: key };
+    return { type: 'array', val: key.substr(0, pos) };
+  };
+
+  function isArray(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  }
 
   var extract = function(url) {
     var pos = url.lastIndexOf('?');
