@@ -23,6 +23,11 @@ queryExtend('http://foo.com?per_page=10', '?per_page=50');
 queryExtend('http://foo.com?per_page=10', '?per_page=50', { per_page: 20 });
 // => http://foo.com?per_page=20
 
+// Passing in 'true' as last parameter makes
+// queryExtend return the result as Object
+queryExtend('?per_page=10', '?per_page=50', true);
+// => { per_page: '50' }
+
 // ... I think you get it.. :)
 
 ```

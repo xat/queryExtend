@@ -17,5 +17,7 @@ describe('query-extend', function() {
     expect(queryExtend()).to.be.equal('');
     expect(queryExtend({ my_array: [1,2], my_other_array: [3] })).to.be.equal('?my_array[]=1&my_array[]=2&my_other_array[]=3');
     expect(queryExtend('?my_array[]=1&my_array[]=2&my_array[]=3', { my_array: [5] })).to.be.equal('?my_array[]=5');
+    expect(queryExtend('?per_page=2&foo=bar', '?foo=test', true).foo).to.be.equal('test');
+    expect(queryExtend('?foo[]=bar', true).foo[0]).to.be.equal('bar');
   });
 });

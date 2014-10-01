@@ -85,10 +85,15 @@
 
   var queryExtend = function() {
     var args = Array.prototype.slice.call(arguments, 0);
+    var asObject = args[args.length-1] === true;
     var base = '';
 
     if (!args.length) {
       return base;
+    }
+
+    if (asObject) {
+      args.pop();
     }
 
     var normalized = args.map(function(param) {
@@ -100,7 +105,12 @@
       return param;
     });
 
-    return base + objectToQuery(extend.apply(extend, normalized));
+    if (asObject) {
+      return extend.apply({}, normalized);
+    } else {
+      return base + objectToQuery(extend.apply({}, normalized));
+    }
+
   };
 
   // Node.js / browserify
