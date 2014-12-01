@@ -113,12 +113,16 @@
 
   };
 
-  // Node.js / browserify
   if (typeof module !== 'undefined' && module.exports) {
+    // Node.js / browserify
     module.exports = queryExtend;
-  }
-  // <script>
-  else {
+  } else if  (typeof define === 'function' && define.amd) {
+    // require.js / AMD
+    define(function() {
+      return queryExtend;
+    });
+  } else {
+    // <script>
     glob.queryExtend = queryExtend;
   }
 

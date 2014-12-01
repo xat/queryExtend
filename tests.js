@@ -20,4 +20,14 @@ describe('query-extend', function() {
     expect(queryExtend('?per_page=2&foo=bar', '?foo=test', true).foo).to.be.equal('test');
     expect(queryExtend('?foo[]=bar', true).foo[0]).to.be.equal('bar');
   });
+  it('exports an AMD module', function(done) {
+    var requirejs = require('requirejs');
+    requirejs.config({
+      baseUrl : '.'
+    });
+    requirejs(['query-extend'], function(queryExtend){
+      expect(queryExtend).to.be.a(Function);
+      done();
+    });
+  });
 });
