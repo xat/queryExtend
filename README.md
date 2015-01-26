@@ -43,6 +43,15 @@ queryExtend('?per_page=10', '?per_page=50', true);
 ```bower install query-extend```
 
 
+## Contribution
+
+1. __Setup__: Run `npm install`.
+
+2. __Testing__: Run `npm test` to see if the tests pass.
+
+3. __Minify__: Run `gulp`.
+
+
 ## License
 Copyright (c) 2014 Simon Kusterer
 Licensed under the MIT license.
