@@ -1,6 +1,6 @@
 {
   "name": "query-extend",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "like _.extend, just for url queries.",
   "main": "query-extend.js",
   "devDependencies": {
