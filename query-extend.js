@@ -3,20 +3,19 @@
   var queryToObject = function(query) {
     var obj = {};
     if (!query) return obj;
-    query.split('&')
-      .forEach(function(val) {
-        var pieces = val.split('=');
-        var key = parseKey(pieces[0]);
-        var keyDecoded = decodeURIComponent(key.val);
-        var valDecoded = pieces[1] && decodeURIComponent(pieces[1]);
+    each(query.split('&'), function(val) {
+      var pieces = val.split('=');
+      var key = parseKey(pieces[0]);
+      var keyDecoded = decodeURIComponent(key.val);
+      var valDecoded = pieces[1] && decodeURIComponent(pieces[1]);
 
-        if (key.type === 'array') {
-          if (!obj[keyDecoded]) obj[keyDecoded] = [];
-          obj[keyDecoded].push(valDecoded);
-        } else if (key.type === 'string') {
-          obj[keyDecoded] = valDecoded;
-        }
-      });
+      if (key.type === 'array') {
+        if (!obj[keyDecoded]) obj[keyDecoded] = [];
+        obj[keyDecoded].push(valDecoded);
+      } else if (key.type === 'string') {
+        obj[keyDecoded] = valDecoded;
+      }
+    });
     return obj;
   };
 
@@ -30,7 +29,7 @@
       }
       encodedKey = encodeURIComponent(k);
       if (isArray(obj[k])) {
-        obj[k].forEach(function(val) {
+        each(obj[k], function(val) {
           pieces.push(encodedKey + '[]=' + encodeURIComponent(val));
         });
         continue;
@@ -47,9 +46,9 @@
     return { type: 'array', val: key.substr(0, pos) };
   };
 
-  function isArray(val) {
+  var isArray = function(val) {
     return Object.prototype.toString.call(val) === '[object Array]';
-  }
+  };
 
   var extract = function(url) {
     var pos = url.lastIndexOf('?');
@@ -70,7 +69,7 @@
 
   // thanks raynos!
   // https://github.com/Raynos/xtend
-  function extend() {
+  var extend = function() {
     var target = {};
     for (var i = 0; i < arguments.length; i++) {
       var source = arguments[i];
@@ -81,7 +80,7 @@
       }
     }
     return target;
-  }
+  };
 
   var queryExtend = function() {
     var args = Array.prototype.slice.call(arguments, 0);
@@ -96,7 +95,7 @@
       args.pop();
     }
 
-    var normalized = args.map(function(param) {
+    var normalized = map(args, function(param) {
       if (typeof param === 'string') {
         var extracted = extract(param);
         if (extracted.base) base = extracted.base;
@@ -111,6 +110,20 @@
       return base + objectToQuery(extend.apply({}, normalized));
     }
 
+  };
+    
+  var each = function(arr, fn) {
+    for (var i = 0, l = arr.length; i < l; i++) {
+      fn(arr[i], i);
+    }
+  };
+
+  var map = function(arr, fn) {
+    var res = [];
+    for (var i = 0, l = arr.length; i < l; i++) {
+      res.push( fn(arr[i], i) );
+    } 
+    return res;     
   };
 
   if (typeof module !== 'undefined' && module.exports) {
